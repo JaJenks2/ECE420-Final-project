@@ -7,7 +7,7 @@
 #include "kiss_fft/kiss_fftr.h"
 #include <cassert>
 
-// ── Helper: next power of two ────────────────────────────────────────────────
+// ── Helper: next power of two  ────────────────────────────────────────────────
 static int nextPow2(int v) {
     int p = 1;
     while (p < v) p <<= 1;
