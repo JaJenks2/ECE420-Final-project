@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinner_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:padding="8dp"/>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_raw"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"/>
+<!--        android:layout_weight="1" -->
+
+
+    <Button
+        android:id="@+id/btn_process"
+        android:text="Process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Toggle for normalize on/off -->
+    <ToggleButton
+        android:id="@+id/toggle_normalize"
+        android:textOff="Normalized Off"
+        android:textOn="Normalize @1kHz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Next screen button; logic to be added later -->
+    <Button
+        android:id="@+id/btn_next"
+        android:text="Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

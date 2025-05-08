@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harman"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_raw"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="16dp"
+        android:padding="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_text" />
+
+    <LinearLayout
+        android:id="@+id/graph_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/graph_raw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginEnd="16dp">
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#2196F3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Measured Response"
+                android:textSize="16sp"
+                android:paddingStart="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#F44336" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Target Curve"
+                android:textSize="16sp"
+                android:paddingStart="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinner_profile"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_marginTop="10dp"
+        android:padding="8dp"
+        android:popupBackground="@android:color/white"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/graph_raw" />
+
+    <Button
+        android:id="@+id/btn_process"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Process"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/toggle_normalize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/toggle_normalize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:textOff="Normalized Off"
+        android:textOn="Normalize @1kHz"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Back"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.45" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Next"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.45" />
+
+    <TextView
+        android:id="@+id/tv_mse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/spinner_profile"
+        app:layout_constraintTop_toBottomOf="@+id/graph_legend" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

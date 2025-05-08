@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 1) Combined Raw / Target / EQ’ed Response -->
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_combined"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.30"/>
+
+    <!-- 2) Cascaded EQ Filter Curve -->
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_filters"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/graph_combined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.30"/>
+
+    <!-- 3) Legend (wrap_content + start+end → perfectly centered) -->
+    <LinearLayout
+        android:id="@+id/legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/graph_filters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Measured (blue) -->
+        <View
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="#2196F3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Measured"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Target (red) -->
+        <View
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="#F44336"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Target"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- EQ’ed (green) -->
+        <View
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="#00AA00"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" EQ’ed"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Pure EQ curve (magenta) -->
+        <View
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="#AA00FF"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Filter Curve"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- 4) MSE display, also centered -->
+    <TextView
+        android:id="@+id/tv_mse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:padding="4dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/legend" />
+
+    <!-- 5) Scrollable band info list -->
+    <ScrollView
+        android:id="@+id/scroll_bands"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_mse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_apply_eq"
+        app:layout_constraintHeight_percent="0.25">
+        <LinearLayout
+            android:id="@+id/band_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="8dp"/>
+    </ScrollView>
+
+
+    <!-- 6) Apply EQ Button, centered below everything -->
+    <Button
+        android:id="@+id/btn_apply_eq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply EQ"
+        app:layout_constraintTop_toBottomOf="@id/scroll_bands"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
